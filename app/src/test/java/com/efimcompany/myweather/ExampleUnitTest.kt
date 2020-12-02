@@ -35,7 +35,8 @@ class ExampleUnitTest {
     val collection = listOf(schoolboy_1,schoolboy_2,schoolboy_3,schoolboy_4,schoolboy_5)
 
     @Test
-    fun addition_isCorrect() {
+    fun startTest() {
+
         // Тест яндекс погода api
         // TestGetKhttp()
 
