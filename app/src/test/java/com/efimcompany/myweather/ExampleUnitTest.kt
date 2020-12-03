@@ -1,13 +1,8 @@
 package com.efimcompany.myweather
 
-import androidx.core.graphics.toColorInt
 import com.google.gson.Gson
 import khttp.get
-import khttp.responses.Response
-import khttp.delete as httpDelete
 import org.junit.Test
-import org.json.JSONObject
-import org.junit.Assert.*
 import java.time.LocalDate
 
 /**
@@ -20,10 +15,30 @@ import java.time.LocalDate
 
 fun TestGetKhttp(){
 
+    val resp = get(
+        url = "https://geocode-maps.yandex.ru/1.x/",
+        params = mapOf("format" to "json", "apikey" to "c89e8a63-acf8-42f3-b555-d396295960e8", "geocode" to "Еткуль")
+    )
+
+    //println(resp.text)
+
+    val geoAPIYandex = Gson().fromJson(resp.text, GeoAPIYandex::class.java)
+
+    val geocity = writeCityName(geoAPIYandex.response.GeoObjectCollection.featureMember[0].GeoObject.metaDataProperty.GeocoderMetaData.Address.Components)
+    val geopos = geoAPIYandex.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
+
+    val geoPosPars = geopos.split(" ")
+
+    val lon = geoPosPars[0]
+    val lat = geoPosPars[1]
+
+
+    println("$geocity ( широта:$lat, долгота: $lon)")
+
     val response = get(
         url = "https://api.weather.yandex.ru/v2/forecast",
         headers = mapOf("X-Yandex-API-Key" to "01cee637-437f-4881-9fa4-aab0bf846391"),
-        params = mapOf("lat" to "55", "lon" to "61", "lang" to "ru_RU")
+        params = mapOf("lat" to lat, "lon" to lon, "lang" to "ru_RU")
     )
 
     val jsonYandexAPI = Gson().fromJson(response.text, JsonYandexAPI::class.java)
@@ -60,7 +75,7 @@ class ExampleUnitTest {
         println(collection.sortingByAge())
 
         // Тест яндекс погода api
-        println("\n\n\nПогода")
+        println("\n\n\nПогода по координатам: ")
         TestGetKhttp()
 
     }

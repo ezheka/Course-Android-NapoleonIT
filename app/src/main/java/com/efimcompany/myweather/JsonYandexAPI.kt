@@ -1,12 +1,14 @@
 package com.efimcompany.myweather
-
+ /*
+ Работа с погодой
+  */
 data class JsonYandexAPI(val forecasts: List<Forecasts>) {
 }
 
 data class Forecasts(val date: String = "", val parts: Parts){
 }
 
-class Parts(val day_short: Day)
+data class Parts(val day_short: Day)
 {
 }
 
@@ -56,3 +58,148 @@ fun windDirection(str:String): String {
 
     return wind
 }
+
+
+/*
+Работа с геолокацией
+ */
+
+data class GeoAPIYandex(val response:Response){
+}
+
+data class  Response(val GeoObjectCollection:GeoObjectCollection){
+}
+
+data class GeoObjectCollection(val featureMember: List<FeatureMember>){
+}
+
+data class FeatureMember(val GeoObject: GeoObject){
+}
+
+data class GeoObject(val metaDataProperty: MetaDataProperty, val Point: Point){
+}
+
+data class MetaDataProperty(val GeocoderMetaData:GeocoderMetaData){
+}
+
+data class GeocoderMetaData(val Address:Address){
+}
+
+data class Address(val Components:List<Components>){
+}
+
+data class Components(val kind:String, val name:String){
+}
+
+data class Point(val pos:String){
+}
+
+
+fun writeCityName(components: List<Components>):String{
+
+    var city: String = "Москва"
+
+    for (i in 0..components.lastIndex){
+       if(components[i].kind=="province") {
+           city=components[i].name
+       }
+        if(components[i].kind=="locality") {
+            city=components[i].name
+        }
+   }
+
+    return city
+}
+
+/*
+{
+    "response": {
+        "GeoObjectCollection": {
+            "metaDataProperty": {
+                "GeocoderResponseMetaData": {
+                    "request": "Москва, улица Новый Арбат, дом 24",
+                    "found": "1",
+                    "results": "10"
+                }
+            },
+            "featureMember": [
+            {
+                "GeoObject": {
+                "metaDataProperty": {
+                    "GeocoderMetaData": {
+                        "kind": "house",
+                        "text": "Россия, Москва, улица Новый Арбат, 24",
+                        "precision": "exact",
+                        "Address": {
+                        "country_code": "RU",
+                        "postal_code": "119019",
+                        "formatted": "Москва, улица Новый Арбат, 24",
+                        "Components": [
+                        {
+                            "kind": "country",
+                            "name": "Россия"
+                        },
+                        {
+                            "kind": "province",
+                            "name": "Центральный федеральный округ"
+                        },
+                        {
+                            "kind": "province",
+                            "name": "Москва"
+                        },
+                        {
+                            "kind": "locality",
+                            "name": "Москва"
+                        },
+                        {
+                            "kind": "street",
+                            "name": "улица Новый Арбат"
+                        },
+                        {
+                            "kind": "house",
+                            "name": "24"
+                        }
+                        ]
+                        },
+                        "AddressDetails": {
+                        "Country": {
+                        "AddressLine": "Москва, улица Новый Арбат, 24",
+                        "CountryNameCode": "RU",
+                        "CountryName": "Россия",
+                        "AdministrativeArea": {
+                        "AdministrativeAreaName": "Москва",
+                        "Locality": {
+                        "LocalityName": "Москва",
+                        "Thoroughfare": {
+                        "ThoroughfareName": "улица Новый Арбат",
+                        "Premise": {
+                        "PremiseNumber": "24",
+                        "PostalCode": {
+                        "PostalCodeNumber": "119019"
+                    }
+                    }
+                    }
+                    }
+                    }
+                    }
+                    }
+                    }
+            },
+                "description": "Москва, Россия",
+                "name": "улица Новый Арбат, 24",
+                "boundedBy": {
+                "Envelope": {
+                "lowerCorner": "37.583508 55.750768",
+                "upperCorner": "37.591719 55.755398"
+            }
+            },
+                "Point": {
+                "pos": "37.587614 55.753083"
+            }
+        }
+    }
+    ]
+}
+}
+}
+*/
