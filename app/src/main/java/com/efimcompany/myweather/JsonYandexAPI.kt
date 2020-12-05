@@ -1,7 +1,11 @@
 package com.efimcompany.myweather
- /*
- Работа с погодой
-  */
+
+import com.google.gson.Gson
+import khttp.get
+
+/*
+Работа с погодой
+ */
 data class JsonYandexAPI(val forecasts: List<Forecasts>) {
 }
 
@@ -59,6 +63,25 @@ fun windDirection(str:String): String {
     return wind
 }
 
+
+fun geopositionCity(){
+    val resp = get(
+        url = "https://geocode-maps.yandex.ru/1.x/",
+        params = mapOf("format" to "json", "apikey" to "c89e8a63-acf8-42f3-b555-d396295960e8", "geocode" to "Еткуль")
+    )
+
+    //println(resp.text)
+
+    val geoAPIYandex = Gson().fromJson(resp.text, GeoAPIYandex::class.java)
+
+    val geocity = writeCityName(geoAPIYandex.response.GeoObjectCollection.featureMember[0].GeoObject.metaDataProperty.GeocoderMetaData.Address.Components)
+    val geopos = geoAPIYandex.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
+
+    val geoPosPars = geopos.split(" ")
+
+    val lon = geoPosPars[0]
+    val lat = geoPosPars[1]
+}
 
 /*
 Работа с геолокацией
