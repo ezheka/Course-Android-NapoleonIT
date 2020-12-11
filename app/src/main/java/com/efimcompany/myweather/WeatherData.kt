@@ -1,5 +1,7 @@
 package com.efimcompany.myweather
 
-import java.io.Serializable
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-data class WeatherData(val city:String, val date: String, val temp:Int, val temp_2:Int): Serializable
+@Parcelize
+data class WeatherData(val date: String, val temp:Int, val temp_2:Int): Parcelable

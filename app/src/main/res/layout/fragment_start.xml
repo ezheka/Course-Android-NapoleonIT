@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/screen1">
+
+    <Button
+        android:id="@+id/buttonGoTo7Day"
+        android:layout_width="147dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
+        android:background="#41081c"
+        android:fontFamily="monospace"
+        android:text="Сохранить"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextCity"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextCity"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextCity" />
+
+    <EditText
+        android:id="@+id/editTextTextCity"
+        android:layout_width="284dp"
+        android:layout_height="43dp"
+        android:background="@android:color/background_light"
+        android:ems="10"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:inputType="text"
+        android:maxLines="1"
+        android:minLines="1"
+        android:textColor="#41081c"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="266dp"
+        android:layout_height="84dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:text="Введите ваш\nгород:"
+        android:textColor="#41081c"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextCity"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextCity"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextCity" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:text="Погода в вашем \nгороде"
+        android:textColor="#41081c"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

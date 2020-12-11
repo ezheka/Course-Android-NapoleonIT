@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import com.efimcompany.myweather.UI.StartFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import khttp.get
 class MainActivity : AppCompatActivity() {
@@ -13,6 +14,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val fragmentManager = supportFragmentManager
+
+        fragmentManager.beginTransaction()
+            .add(R.id.container, StartFragment())
+            .commit()
+
+        /*
         var nameCity = intent.extras?.getSerializable("nameCity")
 
         if(nameCity==null){
@@ -34,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("WaetherData", weather)
             startActivity(intent)
         }
-
+*/
     }
 }
 

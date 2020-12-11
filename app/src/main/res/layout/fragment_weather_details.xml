@@ -4,28 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WeatherDetalisActivity">
+    android:background="@drawable/screen3">
 
     <TextView
         android:id="@+id/textHeaderDetalis"
-        android:layout_width="273dp"
-        android:layout_height="128dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="monospace"
         android:gravity="center"
-        android:text="Погода на \n 05.12.2020"
-        android:textAllCaps="true"
+        android:text="Погода на \n00.00.0000"
+        android:textColor="#41081c"
         android:textSize="36sp"
-        android:textStyle="italic"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textWeather"
-        android:layout_width="146dp"
-        android:layout_height="129dp"
+        android:layout_width="270dp"
+        android:layout_height="126dp"
         android:layout_marginTop="120dp"
+        android:fontFamily="monospace"
         android:gravity="center"
-        android:text="-15"
-        android:textColor="#0241FF"
+        android:text="0"
+        android:textColor="#41081c"
         android:textSize="100sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -36,21 +40,12 @@
         android:id="@+id/textWeather_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ощущается как: -17"
+        android:fontFamily="monospace"
+        android:text="Ощущается как: 0"
+        android:textColor="#41081c"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textWeather" />
 
-    <Button
-        android:id="@+id/buttonOpenStartActivity"
-        android:layout_width="126dp"
-        android:layout_height="66dp"
-        android:gravity="center"
-        android:text="Назад"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textHeaderDetalis"
-        app:layout_constraintEnd_toStartOf="@+id/textHeaderDetalis"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
