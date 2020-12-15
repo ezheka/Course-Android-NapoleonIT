@@ -1,4 +1,4 @@
-package com.efimcompany.myweather.UI
+package com.efimcompany.myweather.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

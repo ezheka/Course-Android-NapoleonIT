@@ -1,13 +1,9 @@
 package com.efimcompany.myweather
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import com.efimcompany.myweather.UI.StartFragment
-import kotlinx.android.synthetic.main.activity_main.*
-import khttp.get
+import com.efimcompany.myweather.ui.StartFragment
+
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,34 +12,10 @@ class MainActivity : AppCompatActivity() {
 
         val fragmentManager = supportFragmentManager
 
+
         fragmentManager.beginTransaction()
             .add(R.id.container, StartFragment())
             .commit()
 
-        /*
-        var nameCity = intent.extras?.getSerializable("nameCity")
-
-        if(nameCity==null){
-            nameCity = "Челябинск"
-        }
-
-        textCity.text = "Погода в городе:\n$nameCity"
-
-        buttonWeather_1.setOnClickListener {
-            val weather = WeatherData(nameCity.toString(),"05.12.2020", -7,-13)
-            val intent = Intent(this, WeatherDetalisActivity::class.java)
-            intent.putExtra("WaetherData", weather)
-            startActivity(intent)
-        }
-
-        buttonWeather_2.setOnClickListener {
-            val weather = WeatherData(nameCity.toString(),"06.12.2020", -8,-16)
-            val intent = Intent(this, WeatherDetalisActivity::class.java)
-            intent.putExtra("WaetherData", weather)
-            startActivity(intent)
-        }
-*/
     }
 }
-
-

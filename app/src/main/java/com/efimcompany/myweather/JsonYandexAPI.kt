@@ -1,5 +1,6 @@
 package com.efimcompany.myweather
 
+import android.os.AsyncTask
 import com.google.gson.Gson
 import khttp.get
 

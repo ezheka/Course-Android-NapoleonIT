@@ -3,7 +3,9 @@ package com.efimcompany.myweather
 import com.google.gson.Gson
 import khttp.get
 import org.junit.Test
+import java.text.DateFormat
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -17,7 +19,7 @@ fun TestGetKhttp(){
 
     val resp = get(
         url = "https://geocode-maps.yandex.ru/1.x/",
-        params = mapOf("format" to "json", "apikey" to "c89e8a63-acf8-42f3-b555-d396295960e8", "geocode" to "Еткуль")
+        params = mapOf("format" to "json", "apikey" to "c89e8a63-acf8-42f3-b555-d396295960e8", "geocode" to "челяб")
     )
 
     //println(resp.text)
@@ -44,7 +46,12 @@ fun TestGetKhttp(){
     val jsonYandexAPI = Gson().fromJson(response.text, JsonYandexAPI::class.java)
 
     for (i in 0..6){
-        println(LocalDate.parse(jsonYandexAPI.forecasts[i].date).dayOfMonth.toString() + " " + LocalDate.parse(jsonYandexAPI.forecasts[i].date).month +
+
+        var date = LocalDate.parse(jsonYandexAPI.forecasts[i].date)
+        var formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+        var formattedDate = date.format(formatter)
+
+        println(formattedDate +
                 " - Темпиратура воздуха: "+ jsonYandexAPI.forecasts[i].parts.day_short.temp+
                 "* ощущается как: "+ jsonYandexAPI.forecasts[i].parts.day_short.feels_like+
                 "* | "+ descriptionWeather(jsonYandexAPI.forecasts[i].parts.day_short.condition)+
