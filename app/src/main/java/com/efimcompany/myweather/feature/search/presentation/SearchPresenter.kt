@@ -1,14 +1,15 @@
-package com.efimcompany.myweather.feature.search
-
-import com.efimcompany.myweather.ui.CityAndCoordinates
+package com.efimcompany.myweather.feature.search.presentation
 
 class SearchPresenter(private val view: SearchView) {
 
+    /*
     var cityAndCoordinates = CityAndCoordinates("Челябинск", 55.15402,61.42915)
 
     fun setData(cityAndCoordinates: CityAndCoordinates) {
         this.cityAndCoordinates=cityAndCoordinates
     }
+
+     */
 
     fun validate(city: String, latitude: String, longitube: String): Boolean {
 

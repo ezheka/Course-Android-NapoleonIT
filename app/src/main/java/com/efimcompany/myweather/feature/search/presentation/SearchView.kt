@@ -1,4 +1,4 @@
-package com.efimcompany.myweather.feature.search
+package com.efimcompany.myweather.feature.search.presentation
 
 interface SearchView {
     fun showNameCityError()

@@ -6,9 +6,19 @@
     android:layout_height="match_parent"
     android:background="@drawable/screen2">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvDays"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="110dp"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textCity"
+        tools:layout_editor_absoluteX="0dp" />
+
     <TextView
         android:id="@+id/textCity"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:fontFamily="monospace"
@@ -21,117 +31,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonDay4"
-        android:layout_width="406dp"
-        android:layout_height="53dp"
-        android:background="@android:color/background_light"
-        android:fontFamily="monospace"
-        android:text="Погода на 14.12.2020"
-        android:textColor="#94c2df"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
 
-    <Button
-        android:id="@+id/buttonDay5"
-        android:layout_width="406dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="4dp"
-        android:background="@android:color/background_light"
-        android:fontFamily="monospace"
-        android:text="Погода на 15.12.2020"
-        android:textColor="#94c2df"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonDay4" />
-
-    <Button
-        android:id="@+id/buttonDay6"
-        android:layout_width="406dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="4dp"
-        android:background="@android:color/background_light"
-        android:fontFamily="monospace"
-        android:text="Погода на 16.12.2020"
-        android:textColor="#94c2df"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonDay5" />
-
-    <Button
-        android:id="@+id/buttonDay7"
-        android:layout_width="406dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="4dp"
-        android:background="@android:color/background_light"
-        android:fontFamily="monospace"
-        android:text="Погода на 17.12.2020"
-        android:textColor="#94c2df"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonDay6" />
-
-    <Button
-        android:id="@+id/buttonDay2"
-        android:layout_width="406dp"
-        android:layout_height="53dp"
-        android:layout_marginBottom="4dp"
-        android:background="@android:color/background_light"
-        android:fontFamily="monospace"
-        android:text="Погода на Завтра"
-        android:textColor="#94c2df"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/buttonDay3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias=".50"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/buttonDay3"
-        android:layout_width="406dp"
-        android:layout_height="53dp"
-        android:layout_marginBottom="4dp"
-        android:background="@android:color/background_light"
-        android:fontFamily="monospace"
-        android:text="Погода на 13.12.2020"
-        android:textColor="#94c2df"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/buttonDay4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/buttonDay1"
-        android:layout_width="406dp"
-        android:layout_height="53dp"
-        android:layout_marginBottom="4dp"
-        android:background="@android:color/background_light"
-        android:fontFamily="monospace"
-        android:text="Погода на Сегодня"
-        android:textColor="#94c2df"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/buttonDay2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.50"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
