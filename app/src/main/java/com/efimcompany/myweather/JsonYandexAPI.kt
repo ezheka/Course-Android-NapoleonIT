@@ -1,8 +1,7 @@
 package com.efimcompany.myweather
 
-import android.os.AsyncTask
-import com.google.gson.Gson
-import khttp.get
+//import com.google.gson.Gson
+//import khttp.get
 
 /*
 Работа с погодой
@@ -66,7 +65,7 @@ fun windDirection(str:String): String {
 
 
 fun geopositionCity(){
-    val resp = get(
+    /*val resp = get(
         url = "https://geocode-maps.yandex.ru/1.x/",
         params = mapOf("format" to "json", "apikey" to "c89e8a63-acf8-42f3-b555-d396295960e8", "geocode" to "Еткуль")
     )
@@ -82,6 +81,8 @@ fun geopositionCity(){
 
     val lon = geoPosPars[0]
     val lat = geoPosPars[1]
+
+     */
 }
 
 /*

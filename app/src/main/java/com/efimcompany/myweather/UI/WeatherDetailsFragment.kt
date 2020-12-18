@@ -1,8 +1,8 @@
 package com.efimcompany.myweather.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.fragment.app.Fragment
 import com.efimcompany.myweather.R
 import com.efimcompany.myweather.WeatherData
 import kotlinx.android.synthetic.main.fragment_weather_details.*

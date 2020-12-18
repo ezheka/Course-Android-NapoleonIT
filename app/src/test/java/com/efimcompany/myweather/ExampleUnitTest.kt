@@ -1,11 +1,9 @@
 package com.efimcompany.myweather
-
+/*
 import com.google.gson.Gson
 import khttp.get
+ */
 import org.junit.Test
-import java.text.DateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -16,7 +14,7 @@ import java.time.format.DateTimeFormatter
 
 
 fun TestGetKhttp(){
-
+/*
     val resp = get(
         url = "https://geocode-maps.yandex.ru/1.x/",
         params = mapOf("format" to "json", "apikey" to "c89e8a63-acf8-42f3-b555-d396295960e8", "geocode" to "челяб")
@@ -61,6 +59,8 @@ fun TestGetKhttp(){
                 " | Давление: "+ jsonYandexAPI.forecasts[i].parts.day_short.pressure_mm+" мм рт.ст"+
                 " | Влажность воздуха: "+ jsonYandexAPI.forecasts[i].parts.day_short.humidity+"%")
     }
+
+ */
 
 }
 

@@ -1,16 +1,15 @@
-package com.efimcompany.myweather.feature.ScreenDays.presentation
+package com.efimcompany.myweather.feature.screenDays.presentation
 
 import com.efimcompany.myweather.WeatherData
-import moxy.InjectViewState
 import moxy.MvpPresenter
 import moxy.MvpView
-import moxy.viewstate.strategy.SkipStrategy
+import moxy.viewstate.strategy.AddToEndSingleStrategy
+import moxy.viewstate.strategy.OneExecutionStateStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
-@InjectViewState
 class ScreenDaysPresenter: MvpPresenter<ScreenDaysView>() {
 
-    private  val weatherdays: List<WeatherData> = listOf(
+    private var weatherdays: List<WeatherData> = listOf(
         WeatherData("11.12.2020", -11,-21),
         WeatherData("12.12.2020", -12,-22),
         WeatherData("13.12.2020", -13,-23),
@@ -22,14 +21,21 @@ class ScreenDaysPresenter: MvpPresenter<ScreenDaysView>() {
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
+        viewState.showWeather(weatherdays)
+    }
 
-        viewState.setWeather(weatherdays)
+    fun onDayClick(weatherData: WeatherData) {
+        //weatherdays = weatherdays.filter { it!=weatherData }
+        viewState.openWeatherDetail(weatherData)
     }
 }
 
 interface ScreenDaysView: MvpView{
 
-    @StateStrategyType(SkipStrategy::class)
-    fun setWeather(weatherData: List<WeatherData>)
+    @StateStrategyType(AddToEndSingleStrategy::class)
+    fun showWeather(weatherData: List<WeatherData>)
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun openWeatherDetail(weatherData: WeatherData)
 
 }

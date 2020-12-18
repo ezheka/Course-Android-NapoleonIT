@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.efimcompany.myweather.R
-import com.efimcompany.myweather.feature.ScreenDays.ui.Weather7DayFragment
+import com.efimcompany.myweather.feature.screenDays.ui.Weather7DayFragment
 import com.efimcompany.myweather.feature.search.presentation.SearchPresenter
 import com.efimcompany.myweather.feature.search.presentation.SearchView
 import kotlinx.android.synthetic.main.fragment_start.*

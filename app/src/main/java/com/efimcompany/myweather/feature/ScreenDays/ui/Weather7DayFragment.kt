@@ -1,12 +1,12 @@
-package com.efimcompany.myweather.feature.ScreenDays.ui
+package com.efimcompany.myweather.feature.screenDays.ui
 
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.efimcompany.myweather.R
 import com.efimcompany.myweather.WeatherData
-import com.efimcompany.myweather.feature.ScreenDays.presentation.ScreenDaysPresenter
-import com.efimcompany.myweather.feature.ScreenDays.presentation.ScreenDaysView
+import com.efimcompany.myweather.feature.screenDays.presentation.ScreenDaysPresenter
+import com.efimcompany.myweather.feature.screenDays.presentation.ScreenDaysView
 import com.efimcompany.myweather.ui.WeatherDetailsFragment
 import kotlinx.android.synthetic.main.fragment_weather7_day.*
 import moxy.MvpAppCompatFragment
@@ -42,18 +42,20 @@ class Weather7DayFragment : MvpAppCompatFragment(R.layout.fragment_weather7_day)
 
         with(rvDays){
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            adapter = ScreenDaysAdapter().also {
+            adapter = ScreenDaysAdapter(onDayClick = {
+                presenter.onDayClick(it)
+            }).also {
                 screenDaysAdapter = it
             }
         }
 
     }
 
-    override fun setWeather(weatherData: List<WeatherData>) {
-        screenDaysAdapter?.setData(weatherData)
+    override fun showWeather(weatherData: List<WeatherData>) {
+        screenDaysAdapter?.submitList(weatherData)
     }
 
-    private fun openWeatherDetail(weatherData: WeatherData){
+    override fun openWeatherDetail(weatherData: WeatherData){
         requireFragmentManager().beginTransaction()
             .replace(R.id.container, WeatherDetailsFragment.newInstance(weatherData))
             .addToBackStack("WeatherDetailsFragment")
