@@ -7,7 +7,7 @@ import com.efimcompany.myweather.R
 import com.efimcompany.myweather.WeatherData
 import com.efimcompany.myweather.feature.screenDays.presentation.ScreenDaysPresenter
 import com.efimcompany.myweather.feature.screenDays.presentation.ScreenDaysView
-import com.efimcompany.myweather.ui.WeatherDetailsFragment
+import com.efimcompany.myweather.feature.detail.ui.WeatherDetailsFragment
 import kotlinx.android.synthetic.main.fragment_weather7_day.*
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter

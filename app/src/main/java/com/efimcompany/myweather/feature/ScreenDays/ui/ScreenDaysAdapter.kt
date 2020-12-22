@@ -12,7 +12,7 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.weather_item.*
 
 class ScreenDaysAdapter(private val onDayClick: (WeatherData) -> Unit) :
-    ListAdapter<WeatherData, ScreenDaysAdapter.ViewHolder>(WeatherDataFillUtilityback()){
+    ListAdapter<WeatherData, ScreenDaysAdapter.ViewHolder>(WeatherDataFillUtilityBack()){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -34,7 +34,7 @@ class ScreenDaysAdapter(private val onDayClick: (WeatherData) -> Unit) :
 
 }
 
-class WeatherDataFillUtilityback: DiffUtil.ItemCallback<WeatherData>() {
+class WeatherDataFillUtilityBack: DiffUtil.ItemCallback<WeatherData>() {
     override fun areItemsTheSame(oldItem: WeatherData, newItem: WeatherData): Boolean {
         return oldItem.date == newItem.date
     }

@@ -25,7 +25,6 @@ class ScreenDaysPresenter: MvpPresenter<ScreenDaysView>() {
     }
 
     fun onDayClick(weatherData: WeatherData) {
-        //weatherdays = weatherdays.filter { it!=weatherData }
         viewState.openWeatherDetail(weatherData)
     }
 }
