@@ -2,12 +2,15 @@ package com.efimcompany.myweather.feature.screenDays.ui
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.efimcompany.myweather.R
 import com.efimcompany.myweather.WeatherData
+import com.efimcompany.myweather.di.weatherApi
+import com.efimcompany.myweather.domain.GetWeatherUseCase
+import com.efimcompany.myweather.feature.detail.ui.WeatherDetailsFragment
 import com.efimcompany.myweather.feature.screenDays.presentation.ScreenDaysPresenter
 import com.efimcompany.myweather.feature.screenDays.presentation.ScreenDaysView
-import com.efimcompany.myweather.feature.detail.ui.WeatherDetailsFragment
 import kotlinx.android.synthetic.main.fragment_weather7_day.*
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
@@ -15,7 +18,7 @@ import moxy.ktx.moxyPresenter
 class Weather7DayFragment : MvpAppCompatFragment(R.layout.fragment_weather7_day), ScreenDaysView {
 
     private val presenter: ScreenDaysPresenter by moxyPresenter {
-        ScreenDaysPresenter()
+        ScreenDaysPresenter(GetWeatherUseCase(weatherApi))
     }
 
     companion object {
@@ -60,6 +63,10 @@ class Weather7DayFragment : MvpAppCompatFragment(R.layout.fragment_weather7_day)
             .replace(R.id.container, WeatherDetailsFragment.newInstance(weatherData))
             .addToBackStack("WeatherDetailsFragment")
             .commit()
+    }
+
+    override fun showLoading(isShow: Boolean) {
+        weatherProgress.isVisible = isShow
     }
 }
 

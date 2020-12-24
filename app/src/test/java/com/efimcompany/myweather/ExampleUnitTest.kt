@@ -1,8 +1,7 @@
 package com.efimcompany.myweather
-/*
-import com.google.gson.Gson
-import khttp.get
- */
+
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import org.junit.Test
 
 /**
@@ -93,5 +92,14 @@ class ExampleUnitTest {
 
     fun List<DataSchoolClasses>.sortingByAge(): List<DataSchoolClasses>{
         return  this.sortedBy { it.age }
+    }
+
+    @Test
+    fun coroutinesTest(){
+        runBlocking {
+            launch {
+
+            }
+        }
     }
 }
