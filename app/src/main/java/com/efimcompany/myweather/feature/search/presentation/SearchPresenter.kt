@@ -1,11 +1,33 @@
 package com.efimcompany.myweather.feature.search.presentation
 
 import android.content.SharedPreferences
+import android.util.Log
+import com.efimcompany.myweather.domain.GetGeoUseCase
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.launch
+import moxy.MvpPresenter
+import moxy.MvpView
+import moxy.presenterScope
+import moxy.viewstate.strategy.AddToEndSingleStrategy
+import moxy.viewstate.strategy.OneExecutionStateStrategy
+import moxy.viewstate.strategy.StateStrategyType
 
-class SearchPresenter(private val view: SearchView){
+class SearchPresenter(): MvpPresenter<SearchView>() {
 
     private val sharedPreferences: SharedPreferences ?= null
 
+    fun onSearchCity(getGoeUseCase: GetGeoUseCase) {
+        viewState.showLoading(isShow = true)
+        presenterScope.launch(CoroutineExceptionHandler { context, throwable ->
+            viewState.showLoading(isShow = false)
+            Log.e("tag", throwable.message, throwable)
+            viewState.showNameCityError()
+        }) {
+            val geoData = getGoeUseCase()
+            viewState.showLoading(isShow = false)
+            viewState.openWeatherDaysFragment(geoData[0].coordinates)
+        }
+    }
 
     fun savingCoordinates(coordinates: String){
         val editor = sharedPreferences?.edit()
@@ -16,11 +38,11 @@ class SearchPresenter(private val view: SearchView){
     fun validate(city: String, latitude: String, longitude: String): Boolean {
 
         return if(!nameCityIsCorrect(city) && !coordinateLatitudeIsCorrect(latitude) && !coordinateLongitubeIsCorrect(longitude)){
-            view.showAllError()
+            viewState.showAllError()
             false
         } else if ((coordinateLatitudeIsCorrect(latitude) && !coordinateLongitubeIsCorrect(longitude))||
             (!coordinateLatitudeIsCorrect(latitude) && coordinateLongitubeIsCorrect(longitude))){
-            view.showCoordinatesError()
+            viewState.showCoordinatesError()
             false
         } else true
 
@@ -61,11 +83,20 @@ class SearchPresenter(private val view: SearchView){
     }
 }
 
-interface SearchView {
+interface SearchView: MvpView {
+
+    @StateStrategyType(AddToEndSingleStrategy::class)
     fun showNameCityError()
 
+    @StateStrategyType(AddToEndSingleStrategy::class)
     fun showCoordinatesError()
 
+    @StateStrategyType(AddToEndSingleStrategy::class)
     fun showAllError()
 
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun openWeatherDaysFragment(coordinates: String)
+
+    @StateStrategyType(AddToEndSingleStrategy::class)
+    fun showLoading(isShow: Boolean)
 }

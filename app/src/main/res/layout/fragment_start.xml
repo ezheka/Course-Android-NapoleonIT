@@ -40,24 +40,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/etLongitube"
-        android:layout_width="142dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/background_light"
-        android:ems="10"
-        android:fontFamily="monospace"
-        android:gravity="center"
-        android:inputType="numberSigned|numberDecimal"
-        android:maxLines="1"
-        android:minLines="1"
-        android:textColor="#41081c"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <EditText
         android:id="@+id/etLatitude"
         android:layout_width="142dp"
         android:layout_height="30dp"
@@ -73,6 +55,24 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <EditText
+        android:id="@+id/etLongitube"
+        android:layout_width="142dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/background_light"
+        android:ems="10"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:inputType="numberSigned|numberDecimal"
+        android:maxLines="1"
+        android:minLines="1"
+        android:textColor="#41081c"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
@@ -136,5 +136,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/geoProgress"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

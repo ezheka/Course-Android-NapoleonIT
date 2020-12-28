@@ -49,7 +49,6 @@ class WeatherDetailsFragment : MvpAppCompatFragment(R.layout.fragment_weather_de
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        presenter.onCaching()
         cechingDetailImg.setOnClickListener {
             presenter.onCaching()
         }

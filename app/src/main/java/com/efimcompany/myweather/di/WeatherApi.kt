@@ -1,6 +1,6 @@
 package com.efimcompany.myweather.di
 
-import com.efimcompany.myweather.data.entity.WeatherResponse
+import com.efimcompany.myweather.data.entity.weatherApi.WeatherResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

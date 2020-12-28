@@ -10,8 +10,7 @@ import retrofit2.create
 val geoApi: GeoApi = Retrofit.Builder()
     .baseUrl("https://geocode-maps.yandex.ru/")
     .client(OkHttpClient.Builder().addInterceptor { chain ->
-        val request = chain.request().newBuilder()
-            .build()
+        val request = chain.request().newBuilder().build()
         chain.proceed(request)
     }.build())
     .addConverterFactory(Json(builderAction = {

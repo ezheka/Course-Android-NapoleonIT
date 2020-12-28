@@ -1,6 +1,6 @@
 package com.efimcompany.myweather.di
 
-import com.efimcompany.myweather.data.entity.geo.GeoResponse
+import com.efimcompany.myweather.data.entity.geocoderApi.GeoResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

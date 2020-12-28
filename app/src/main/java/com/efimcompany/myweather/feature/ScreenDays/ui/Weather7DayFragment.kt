@@ -26,32 +26,24 @@ class Weather7DayFragment : MvpAppCompatFragment(R.layout.fragment_weather7_day)
     private val presenter: ScreenDaysPresenter by moxyPresenter {
         arguments?.let{
 
-            if(it.getString(WEATHERCITY).toString().isNotEmpty()){
-                cityName = it.getString(WEATHERCITY).toString()
-            }
+            val coordinat = it.getString(WEATHERCOORDINATS)!!.split(" ")
 
-            if(it.getDouble(WEATHERLAT)!= 0.00 && it.getDouble(WEATHERLON)!= 0.00){
-                lat = it.getDouble(WEATHERLAT)
-                lon = it.getDouble(WEATHERLON)
-            }
+            lon = coordinat[0].toDouble()
+            lat = coordinat[1].toDouble()
+
         }
         ScreenDaysPresenter(GetWeatherUseCase(weatherApi, lat, lon))
     }
 
     companion object {
 
-        private const val WEATHERCITY = "WEATHERCITY"
-        private const val WEATHERLAT = "WEATHERLAT"
-        private const val WEATHERLON = "WEATHERLON"
+        private const val WEATHERCOORDINATS = "WEATHERCOORDINATS"
 
-        fun newInstance(weatherCity: String, lat: Double, lon: Double) =
+        fun newInstance(coordinates: String) =
             Weather7DayFragment().apply {
                 arguments = Bundle().apply {
 
-                    putString(WEATHERCITY, weatherCity)
-
-                    putDouble(WEATHERLAT, lat)
-                    putDouble(WEATHERLON, lon)
+                    putString(WEATHERCOORDINATS, coordinates)
 
                 }
             }

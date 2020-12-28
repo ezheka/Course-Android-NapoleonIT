@@ -3,22 +3,31 @@ package com.efimcompany.myweather.ui
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.fragment.app.Fragment
+import androidx.core.view.isVisible
 import com.efimcompany.myweather.R
+import com.efimcompany.myweather.di.geoApi
+import com.efimcompany.myweather.domain.GetGeoUseCase
 import com.efimcompany.myweather.feature.screenDays.ui.Weather7DayFragment
 import com.efimcompany.myweather.feature.search.presentation.SearchPresenter
 import com.efimcompany.myweather.feature.search.presentation.SearchView
 import kotlinx.android.synthetic.main.fragment_start.*
+import moxy.MvpAppCompatFragment
+import moxy.ktx.moxyPresenter
 
-class StartFragment : Fragment(R.layout.fragment_start), SearchView {
+class StartFragment : MvpAppCompatFragment(R.layout.fragment_start), SearchView {
 
     private var lat: Double = 55.753215
     private var lon: Double = 37.622504
-    private val presenter = SearchPresenter(this)
+    private var cityName:String = "Москва"
+
+    private val presenter: SearchPresenter by moxyPresenter{
+        SearchPresenter()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        showLoading(false)
         initListeners()
     }
 
@@ -35,18 +44,29 @@ class StartFragment : Fragment(R.layout.fragment_start), SearchView {
                     lat = etLatitude.text.toString().toDouble()
                     lon = etLongitube.text.toString().toDouble()
 
-                    presenter.savingCoordinates("$lon $lat")
+                    openWeatherDaysFragment("$lon $lat")
                 }
-                requireFragmentManager().beginTransaction()
-                    .replace(R.id.container,
-                        Weather7DayFragment.newInstance(
-                            editTextTextCity.text.toString(),
-                            lat, lon
-                        ))
-                    .addToBackStack("Weather7DayFragment")
-                    .commit()
+
+                if(editTextTextCity.text.isNotEmpty()){
+                    showLoading(true)
+                    cityName = editTextTextCity.text.toString()
+                    presenter.onSearchCity(GetGeoUseCase(geoApi, cityName))
+                }
             }
         }
+    }
+
+    override fun openWeatherDaysFragment(coordinates: String){
+        requireFragmentManager().beginTransaction()
+            .replace(R.id.container,
+                Weather7DayFragment.newInstance(coordinates)
+            )
+            .addToBackStack("Weather7DayFragment")
+            .commit()
+    }
+
+    override fun showLoading(isShow: Boolean) {
+        geoProgress.isVisible = isShow
     }
 
     override fun showNameCityError() {
