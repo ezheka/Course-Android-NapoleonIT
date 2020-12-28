@@ -16,10 +16,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textCity" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_cityName" />
 
     <TextView
-        android:id="@+id/textCity"
+        android:id="@+id/tv_cityName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"

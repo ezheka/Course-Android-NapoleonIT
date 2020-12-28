@@ -1,7 +1,7 @@
 package com.efimcompany.myweather
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.efimcompany.myweather.ui.StartFragment
 
 class MainActivity : AppCompatActivity() {

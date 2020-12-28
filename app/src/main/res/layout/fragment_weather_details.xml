@@ -7,7 +7,7 @@
     android:background="@drawable/screen3">
 
     <TextView
-        android:id="@+id/textHeaderDetalis"
+        android:id="@+id/tv_Date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -22,31 +22,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textWeather"
-        android:layout_width="270dp"
-        android:layout_height="126dp"
-        android:layout_marginTop="120dp"
+        android:id="@+id/tv_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:fontFamily="monospace"
         android:gravity="center"
         android:text="0"
         android:textColor="#41081c"
-        android:textSize="100sp"
+        android:textSize="70dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textHeaderDetalis" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_Date" />
 
     <TextView
-        android:id="@+id/textWeather_2"
+        android:id="@+id/tv_feelsLike"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:fontFamily="monospace"
-        android:text="Ощущается как: 0"
-        android:textColor="#41081c"
-        android:textSize="36sp"
+        android:text="Ощущается как: "
+        android:textColor="#658498"
+        android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textWeather" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_temp" />
 
     <ImageView
         android:id="@+id/cechingDetailImg"
@@ -54,8 +56,61 @@
         android:layout_height="48dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_baseline_sync_24" />
+
+    <TextView
+        android:id="@+id/tv_condition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Небольшой снег"
+        android:textColor="#41081c"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_feelsLike" />
+
+    <TextView
+        android:id="@+id/tv_wind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Скорость ветра: 2 м/с"
+        android:textColor="#658498"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_condition" />
+
+    <TextView
+        android:id="@+id/tv_humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Влажность:"
+        android:textColor="#658498"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_wind" />
+
+    <TextView
+        android:id="@+id/tv_pressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:text="Атмосферное"
+        android:textColor="#658498"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_wind" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,11 +10,11 @@ import com.efimcompany.myweather.feature.search.presentation.SearchPresenter
 import com.efimcompany.myweather.feature.search.presentation.SearchView
 import kotlinx.android.synthetic.main.fragment_start.*
 
-data class CityAndCoordinates(val cityName: String, val lat: Double, val lot: Double)
-
 class StartFragment : Fragment(R.layout.fragment_start), SearchView {
 
-    val presenter = SearchPresenter(this)
+    private var lat: Double = 55.753215
+    private var lon: Double = 37.622504
+    private val presenter = SearchPresenter(this)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,20 +31,22 @@ class StartFragment : Fragment(R.layout.fragment_start), SearchView {
                 etLongitube.text.toString()
             ))
             {
-                /*
-                val cityAndCoordinates = CityAndCoordinates(editTextTextCity.text.toString(), etLatitude.text.toString().toDouble(), etLongitube.text.toString().toDouble())
-                presenter.setData(cityAndCoordinates)
-                 */
+                if (etLatitude.text.isNotEmpty() && etLongitube.text.isNotEmpty()){
+                    lat = etLatitude.text.toString().toDouble()
+                    lon = etLongitube.text.toString().toDouble()
 
+                    presenter.savingCoordinates("$lon $lat")
+                }
                 requireFragmentManager().beginTransaction()
                     .replace(R.id.container,
-                        Weather7DayFragment.newInstance(editTextTextCity.text.toString()))
+                        Weather7DayFragment.newInstance(
+                            editTextTextCity.text.toString(),
+                            lat, lon
+                        ))
                     .addToBackStack("Weather7DayFragment")
                     .commit()
             }
-
         }
-
     }
 
     override fun showNameCityError() {

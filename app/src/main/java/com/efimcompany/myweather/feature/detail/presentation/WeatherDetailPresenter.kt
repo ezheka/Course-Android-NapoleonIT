@@ -10,7 +10,7 @@ import moxy.viewstate.strategy.StateStrategyType
 class WeatherDetailPresenter(
     private val weatherData: WeatherData,
     private val cachingWeather: CachingWeather
-): MvpPresenter<WeatherDetailView>() {
+): MvpPresenter<WeatherDetailView>(){
 
     private var isInCaching: Boolean = false
 

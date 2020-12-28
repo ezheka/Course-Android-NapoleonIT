@@ -16,27 +16,16 @@ class ScreenDaysPresenter(
     private val getWeatherUseCase: GetWeatherUseCase
 ): MvpPresenter<ScreenDaysView>() {
 
-    /*private var weatherdays: List<WeatherData> = listOf(
-        WeatherData("11.12.2020", -11,-21),
-        WeatherData("12.12.2020", -12,-22),
-        WeatherData("13.12.2020", -13,-23),
-        WeatherData("14.12.2020", -14,-24),
-        WeatherData("15.12.2020", -15,-25),
-        WeatherData("16.12.2020", -16,-26),
-        WeatherData("17.12.2020", -17,-27)
-    )
-
-     */
-
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         viewState.showLoading(isShow = true)
         presenterScope.launch(CoroutineExceptionHandler { context, throwable ->
             viewState.showLoading(isShow = false)
             Log.e("tag", throwable.message, throwable)
+            viewState.openStartFragment(true)
         }) {
 
-            val weatherData: List<WeatherData> = getWeatherUseCase()
+            val weatherData = getWeatherUseCase()
             viewState.showWeather(weatherData)
             viewState.showLoading(isShow = false)
         }
@@ -57,5 +46,8 @@ interface ScreenDaysView: MvpView{
 
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun showLoading(isShow: Boolean)
+
+    @StateStrategyType(AddToEndSingleStrategy::class)
+    fun openStartFragment(isError: Boolean)
 
 }

@@ -30,7 +30,7 @@ class CachingWeatherImpl(
     }
 
     override fun delete(weatherData: WeatherData) {
-        weathers = weathers.filter { it != weatherData }
+        weathers = emptyList()
     }
 
     override fun getAll(): List<WeatherData> = weathers

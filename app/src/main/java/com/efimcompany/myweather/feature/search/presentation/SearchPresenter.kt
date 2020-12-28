@@ -1,31 +1,31 @@
 package com.efimcompany.myweather.feature.search.presentation
 
-class SearchPresenter(private val view: SearchView) {
+import android.content.SharedPreferences
 
-    /*
-    var cityAndCoordinates = CityAndCoordinates("Челябинск", 55.15402,61.42915)
+class SearchPresenter(private val view: SearchView){
 
-    fun setData(cityAndCoordinates: CityAndCoordinates) {
-        this.cityAndCoordinates=cityAndCoordinates
+    private val sharedPreferences: SharedPreferences ?= null
+
+
+    fun savingCoordinates(coordinates: String){
+        val editor = sharedPreferences?.edit()
+        editor?.putString("Coordinates", coordinates)
+        editor?.apply()
     }
 
-     */
+    fun validate(city: String, latitude: String, longitude: String): Boolean {
 
-    fun validate(city: String, latitude: String, longitube: String): Boolean {
-
-        if(!nameCityIsCorrect(city) && !coordinateLatitudeIsCorrect(latitude) && !coordinateLongitubeIsCorrect(longitube)){
-
+        return if(!nameCityIsCorrect(city) && !coordinateLatitudeIsCorrect(latitude) && !coordinateLongitubeIsCorrect(longitude)){
             view.showAllError()
-            return false
-        }
-        else if ((coordinateLatitudeIsCorrect(latitude) && !coordinateLongitubeIsCorrect(longitube))||
-            (!coordinateLatitudeIsCorrect(latitude) && coordinateLongitubeIsCorrect(longitube))){
+            false
+        } else if ((coordinateLatitudeIsCorrect(latitude) && !coordinateLongitubeIsCorrect(longitude))||
+            (!coordinateLatitudeIsCorrect(latitude) && coordinateLongitubeIsCorrect(longitude))){
             view.showCoordinatesError()
-            return false
-        }
-        else return true
+            false
+        } else true
 
     }
+
 
     private fun nameCityIsCorrect(nameCity: String): Boolean{
         return nameCity.isNotEmpty()
@@ -50,8 +50,8 @@ class SearchPresenter(private val view: SearchView) {
         if (coordinateLongitube.isEmpty()) return false
 
         return try {
-            val coordinatLot = coordinateLongitube.toDouble()
-            coordinatLot in -180.0..180.0
+            val coordinatLon = coordinateLongitube.toDouble()
+            coordinatLon in -180.0..180.0
         }
 
         catch (e:Exception){
@@ -59,4 +59,13 @@ class SearchPresenter(private val view: SearchView) {
         }
 
     }
+}
+
+interface SearchView {
+    fun showNameCityError()
+
+    fun showCoordinatesError()
+
+    fun showAllError()
+
 }
